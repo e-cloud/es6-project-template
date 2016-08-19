@@ -1,0 +1,54 @@
+{
+  "name": "",
+  "author": "",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint": "^3.0.0",
+    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-plugin-import": "^1.5.0",
+    "ghooks": "^1.2.1",
+    "standard-version": "^2.4.0",
+    "validate-commit-msg": "^2.6.1",
+  },
+  "scripts": {
+    "lint": "eslint src/**/*",
+    "test": "echo 'no test!\n'",
+    "release": "standard-version"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "perf",
+        "docs",
+        "style",
+        "refactor",
+        "example",
+        "test",
+        "chore",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 72,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": "\n# allowed type: feat, fix, perf, docs, style, refactor, example, test, chore, revert\n# subject no more than 50 chars\n# a body line no more than 72 chars"
+    },
+    "ghooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "validate-commit-msg",
+      "post-commit": "git log -1 HEAD",
+      "post-checkout": "npm install",
+      "post-merge": "npm install"
+    }
+  }
+}
